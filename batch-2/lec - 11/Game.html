@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>React game</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: rgba(255, 192, 203, 0.256);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .game-container {
+      width: 300px;
+      height: 500px;
+      background-color: white;
+      border: 2px solid black;
+      position: relative;
+    }
+
+    .score {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .box {
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      position: absolute;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    let score = 0;
+
+    function ClickBoxGame() {
+      const handleClick = (e) => {
+        const box = e.target;
+        const container = box.parentElement;
+
+        score++;
+
+        document.getElementById("score").textContent = "Score: " + score;
+
+        const maxX = container.clientWidth - 50;
+        const maxY = container.clientHeight - 50;
+
+        box.style.left = Math.random() * maxX + "px";
+        box.style.top = Math.random() * maxY + "px";
+      };
+
+      return (
+        <div className="game-container">
+          <div id="score" className="score">Score: 0</div>
+
+          <div
+            className="box"
+            onClick={handleClick}
+            style={{ left: "120px", top: "100px" }}
+          ></div>
+        </div>
+      );
+    }
+    ReactDOM.render(<ClickBoxGame />, document.getElementById("root"));
+  </script>
+
+</body>
+</html>

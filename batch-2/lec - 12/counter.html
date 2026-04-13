@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Counter App</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: whitesmoke;
+    }
+
+    .card {
+      background: white;
+      width: 260px;
+      height: 250px;
+      padding: 30px 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .count {
+      font-size: 70px;
+      color: blue;
+      margin: 20px 0;
+      font-weight: bold;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    button {
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      color: white;
+    }
+
+    .decrease { 
+        background: red;
+     }
+    .reset {
+        background: yellow;
+        color: black; 
+    }
+    .increase {
+        background: green; 
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Counter App</h2>
+    <div class="count" id="count">0</div>
+
+    <div class="buttons">
+      <button class="decrease" onclick="decrease()">-</button>
+      <button class="reset" onclick="reset()">Reset</button>
+      <button class="increase" onclick="increase()">+</button>
+    </div>
+  </div>
+
+  <script>
+    let value = 0;
+    const countEl = document.getElementById("count");
+
+    function increase() {
+      value++;
+      countEl.textContent = value;
+    }
+
+    function decrease() {
+      value--;
+      countEl.textContent = value;
+    }
+
+    function reset() {
+      value = 0;
+      countEl.textContent = value;
+    }
+  </script>
+</body>
+</html>

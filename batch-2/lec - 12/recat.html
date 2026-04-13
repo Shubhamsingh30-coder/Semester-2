@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+
+    <style>
+      * {
+        text-align: center;
+        font-size: 1.5rem;
+        margin: 0.5rem;
+      }
+
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f3f3f3;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .card {
+        background: white;
+        padding: 40px 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        width: 250px;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+      }
+
+      .count {
+        font-size: 60px;
+        color: blue;
+        margin: 20px 0;
+      }
+
+      .btns {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      button {
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .dec {
+        background: red;
+        color: white;
+      }
+
+      .reset {
+        background: gold;
+      }
+
+      .inc {
+        background: green;
+        color: white;
+      }
+    </style>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Counter App</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const rootEle = document.querySelector("#root");
+
+      function CounterApp() {
+        const [count, setCount] = React.useState(0);
+
+        const handleDecrement = () => 
+        setCount(count - 1);
+        const handleIncrement = () =>
+        setCount(count + 1);
+        const handleReset = () => 
+        setCount(0);
+
+        return (
+          <div className="card">
+            <h2>Counter App</h2>
+
+            <div className="count">{count}</div>
+
+            <div className="btns">
+              <button className="dec" onClick={handleDecrement}>-</button>
+              <button className="reset" onClick={handleReset}>Reset</button>
+              <button className="inc" onClick={handleIncrement}>+</button>
+            </div>
+          </div>
+        );
+      }
+
+      ReactDOM.render(<CounterApp />, rootEle);
+    </script>
+  </body>
+</html>
